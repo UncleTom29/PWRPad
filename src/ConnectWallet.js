@@ -15,13 +15,13 @@ const ConnectWallet = ({ setSigner }) => {
                 { 
                     id: '0x2727',
                     token: 'ETH',
-                    label: 'PWR ETH',
+                    label: 'ETH+',
                     rpcUrl: 'https://ethereumplus.pwrlabs.io/'
                 },
                 { 
                     id: '0x1406f41',
-                    token: 'ETH',
-                    label: 'PWR ETH',
+                    token: 'BTC',
+                    label: 'BTC+',
                     rpcUrl: 'https://bitcoinplus.pwrlabs.io/'
                 },
             ],
@@ -39,8 +39,8 @@ const ConnectWallet = ({ setSigner }) => {
         if (onboard) {
             const wallets = await onboard.connectWallet();
             if (wallets[0]) {
-                // Ensure the wallet is connected to PWR ETH+
-                await onboard.setChain({ chainId: '0x2727' });
+                // Ensure the wallet is connected to PWR BTC+
+                await onboard.setChain({ chainId: '0x1406f41' });
                 
                 const ethersProvider = new ethers.providers.Web3Provider(wallets[0].provider);
                 setSigner(ethersProvider.getSigner());
